@@ -1,24 +1,50 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+const count = document.querySelector('.count')
+const add = document.querySelector('.add')
+const resetCount = document.querySelector('.reset')
+const sub = document.querySelector('.subtract')
+const buttons = document.querySelector('.buttons')
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector('#counter'))
+// Event Listeners for buttons method of creating a counter using event delegation
+buttons.addEventListener('click', (e) => {
+  if (e.target.classList.contains('add')) {
+    count.innerHTML++;
+    setColor()
+  } else if (e.target.classList.contains('subtract')) {
+    count.innerHTML--;
+    setColor()
+  } else if (e.target.classList.contains('reset')) {
+    count.innerHTML = 0;
+    setColor()
+  }
+})
+
+// Function to change color of count based on value
+function setColor() {
+  if (count.innerHTML > 0) {
+    count.style.color = 'yellow';
+  } else if (count.innerHTML < 0) {
+    count.style.color = 'red';
+  } else {
+    count.style.color = 'white';
+  }
+}
+
+
+
+// Event Listeners for buttons method of creating a counter
+
+// resetCount.addEventListener('click', () => {
+//   count.innerHTML = 0;
+// });
+
+// add.addEventListener('click', () => {
+//     count.innerHTML++;
+// });
+
+// sub.addEventListener('click', () => {
+//     count.innerHTML--;
+// });
+
+
+
